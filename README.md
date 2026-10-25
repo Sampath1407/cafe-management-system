@@ -30,4 +30,4 @@ A simple café management system I built using Java OOP, HTML, CSS, and JavaScri
 ![Little Brew Menu](images/menu.png)
 
 ### Checkout
-![Little Brew Checkout](images/checkout.png)
+![Little Brew Checkout](images/chechout.png)

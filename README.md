@@ -20,3 +20,11 @@ A simple café management system I built using Java OOP, HTML, CSS, and JavaScri
 4. Open `index.html` in your browser.
 
 *This is a learning project, and the menu and orders are currently stored in memory.*
+
+## Screenshots
+
+### Home Page
+![Little Brew Home Page](home.png)
+
+### Checkout
+![Little Brew Checkout](checkout.png)

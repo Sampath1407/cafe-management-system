@@ -24,7 +24,10 @@ A simple café management system I built using Java OOP, HTML, CSS, and JavaScri
 ## Screenshots
 
 ### Home Page
-![Little Brew Home Page](home.png)
+![Little Brew Home Page](image/home.png)
+
+### Menu
+![Little Brew Menu](image/menu.png)
 
 ### Checkout
-![Little Brew Checkout](checkout.png)
+![Little Brew Checkout](image/checkout.png)

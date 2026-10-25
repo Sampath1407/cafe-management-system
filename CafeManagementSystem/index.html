@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Brew | Cafe</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .category {
+            cursor: pointer;
+            background: transparent;
+            font-family: inherit;
+        }
+
+        .category:hover {
+            border-color: var(--green);
+        }
+
+        .cart-section {
+            padding: 65px 8%;
+            background: var(--cream);
+        }
+
+        .cart-container {
+            max-width: 850px;
+            margin: 30px auto 0;
+            padding: 28px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item h3 {
+            font-size: 15px;
+        }
+
+        .cart-item p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--white);
+            color: var(--brown);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-controls button:hover {
+            background: var(--light-green);
+        }
+
+        .cart-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .cart-total {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .checkout-button {
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .checkout-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .empty-cart {
+            color: var(--muted);
+            padding: 18px 0;
+            font-size: 14px;
+        }
+
+        .payment-message {
+            margin-top: 20px;
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 580px) {
+            .cart-section {
+                padding: 50px 6%;
+            }
+
+            .cart-container {
+                padding: 18px;
+            }
+
+            .cart-item {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="#home" class="logo">little<span>brew.</span></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Our Menu</a>
+            <a href="#about">About Us</a>
+            <a href="#cart">My Order</a>
+        </nav>
+
+        <a href="#menu" class="nav-button">Order Now ↗</a>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">YOUR DAILY DOSE OF COMFORT</p>
+
+                <h1>Good coffee.<br>
+                    <span>Better moods.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Slow mornings, warm cups, freshly baked treats.
+                    Your little corner of happiness is waiting for you.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#menu" class="primary-button">Explore Our Menu ↗</a>
+                    <a href="#about" class="text-button">Our Story →</a>
+                </div>
+
+                <div class="hero-note">
+                    <span>☕</span>
+                    <p>Freshly brewed, always made with love.</p>
+                </div>
+            </div>
+
+            <div class="hero-art">
+                <div class="art-circle"></div>
+                <div class="coffee-cup">☕</div>
+
+                <div class="floating-card">
+                    <span>♡</span>
+                    <div>
+                        <strong>Made with love</strong>
+                        <p>One cup at a time</p>
+                    </div>
+                </div>
+
+                <p class="art-caption">a little pause in your day.</p>
+            </div>
+        </section>
+
+        <section class="menu-section" id="menu">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SOMETHING FOR EVERY MOOD</p>
+                    <h2>Made fresh, <span>just for you.</span></h2>
+                </div>
+
+                <p class="section-description">
+                    From your favourite coffee to something sweet.
+                    Find your new favourite below.
+                </p>
+            </div>
+
+            <div class="category-list">
+                <button class="category active" data-category="All">All items</button>
+                <button class="category" data-category="Coffee">☕ Coffee</button>
+                <button class="category" data-category="Beverage">🥤 Beverages</button>
+                <button class="category" data-category="Dessert">🍰 Desserts</button>
+            </div>
+
+            <div class="menu-grid">
+                <article class="menu-card" data-name="Cappuccino" data-price="120" data-category="Coffee">
+                    <div class="item-art coffee-art">
+                        <span class="item-tag">BESTSELLER</span>
+                        <span class="food-emoji">☕</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-category">COFFEE</p>
+                        <h3>Cappuccino</h3>
+                        <p class="item-description">Rich espresso with silky, foamy milk.</p>
+                        <div class="item-footer">
+                            <strong>₹120</strong>
+                            <button class="add-button" data-add="Cappuccino" aria-label="Add Cappuccino">+</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-name="Latte" data-price="140" data-category="Coffee">
+                    <div class="item-art latte-art">
+                        <span class="food-emoji">☕</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-category">COFFEE</p>
+                        <h3>Latte</h3>
+                        <p class="item-description">Smooth espresso, steamed milk, pure comfort.</p>
+                        <div class="item-footer">
+                            <strong>₹140</strong>
+                            <button class="add-button" data-add="Latte" aria-label="Add Latte">+</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-name="Cold Coffee" data-price="100" data-category="Beverage">
+                    <div class="item-art cold-art">
+                        <span class="food-emoji">🥤</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-category">BEVERAGE</p>
+                        <h3>Cold Coffee</h3>
+                        <p class="item-description">Chilled, creamy coffee for sunny afternoons.</p>
+                        <div class="item-footer">
+                            <strong>₹100</strong>
+                            <button class="add-button" data-add="Cold Coffee" aria-label="Add Cold Coffee">+</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-name="Chocolate Cake" data-price="150" data-category="Dessert">
+                    <div class="item-art cake-art">
+                        <span class="food-emoji">🍰</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-category">DESSERT</p>
+                        <h3>Chocolate Cake</h3>
+                        <p class="item-description">Soft chocolate layers for your sweet tooth.</p>
+                        <div class="item-footer">
+                            <strong>₹150</strong>
+                            <button class="add-button" data-add="Chocolate Cake" aria-label="Add Chocolate Cake">+</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-name="Brownie" data-price="90" data-category="Dessert">
+                    <div class="item-art brownie-art">
+                        <span class="food-emoji">🍫</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-category">DESSERT</p>
+                        <h3>Brownie</h3>
+                        <p class="item-description">A fudgy chocolate bite of pure happiness.</p>
+                        <div class="item-footer">
+                            <strong>₹90</strong>
+                            <button class="add-button" data-add="Brownie" aria-label="Add Brownie">+</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <p class="menu-note">A little something for everyone. More treats coming soon ♡</p>
+        </section>
+
+        <section class="cart-section" id="cart">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR LITTLE CRAVINGS</p>
+                    <h2>Your <span>order.</span></h2>
+                </div>
+                <p class="section-description">Everything you've picked, all in one place.</p>
+            </div>
+
+            <div class="cart-container">
+                <div id="cart-items" aria-live="polite">
+                    <p class="empty-cart">Your cart is empty. Add something yummy!</p>
+                </div>
+
+                <div class="cart-bottom">
+                    <div>
+                        <p class="item-category">TOTAL AMOUNT</p>
+                        <p class="cart-total" id="cart-total">₹0.00</p>
+                    </div>
+
+                    <button class="primary-button checkout-button" id="checkout-button" disabled>
+                        Checkout with Cash →
+                    </button>
+                </div>
+
+                <p class="payment-message" id="payment-message" role="status"></p>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="about-icon">☕</div>
+            <div>
+                <p class="eyebrow">MORE THAN JUST COFFEE</p>
+                <h2>Your little <span>happy place.</span></h2>
+                <p>
+                    Whether it's a much-needed study break, a catch-up with
+                    friends, or a quiet moment to yourself, there's always
+                    room for one more cup.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#home" class="logo">little<span>brew.</span></a>
+        <p>Made with ♡ and a little caffeine.</p>
+        <p>© 2026 Little Brew Cafe</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
